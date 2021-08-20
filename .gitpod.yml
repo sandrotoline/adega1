@@ -1,0 +1,5 @@
+ports:
+  - port: 8080
+tasks:
+  - init: mysql < bd.sql
+image: gitpod/workspace-mysql
