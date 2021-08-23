@@ -1,10 +1,15 @@
 package br.gov.sp.fatec.adega1.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Table;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+
+import java.util.Set;
+
 //import javax.persistence.Basic;
 import javax.persistence.Column;
 
@@ -22,6 +27,18 @@ public class Autorizacao {
 
   @Column(name = "aut_nome")
 	private String nome;
+
+	@ManyToMany(mappedBy = "autorizacoes", fetch = FetchType.LAZY)
+	private Set<Usuario> usuarios;
+
+
+	public Set<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(Set<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
 
 	public Long getId() {
 		return id;
