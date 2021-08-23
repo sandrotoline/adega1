@@ -37,7 +37,7 @@ create table fabricante(
   fb_pais varchar(50) not null, 
   primary key (fb_id),
    unique key uni_fb_nome (fb_nome)
-)
+);
 
 create table bebida(
   bed_id bigint unsigned not null,
@@ -49,4 +49,4 @@ create table bebida(
   primary key (bed_id),
   foreign key beb_fab_fk (fb_beb_id) references fabricante(fb_beb_id) on delete restrict on update cascade,
   unique key uni_beb_nome (beb_nome)
-)
+);
