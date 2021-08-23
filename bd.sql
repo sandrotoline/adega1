@@ -31,22 +31,28 @@ foreign key uau_usr_fk (usr_id) references usr_usuario (usr_id) on delete restri
 foreign key uau_aut_fk (aut_id) references aut_autorizacao (aut_id) on delete restrict on update cascade
 );
 
-create table fabricante(
-  fb_id bigint unsigned not null,
-  fb_nome varchar(50) not null,
-  fb_pais varchar(50) not null, 
-  primary key (fb_id),
-   unique key uni_fb_nome (fb_nome)
-);
-
-create table bebida(
-  bed_id bigint unsigned not null,
+create table bebidas(
+  beb_id bigint unsigned not null,
   beb_nome varchar(50) not null,
   beb_volume varchar(10) not null,
   beb_tipo varchar(30) not null,
   beb_descricao varchar(500) not null,
-  fb_beb_id bigint unsigned not null,
-  primary key (bed_id),
-  foreign key beb_fab_fk (fb_beb_id) references fabricante(fb_id) on delete restrict on update cascade,
-  unique key uni_beb_nome (beb_nome)
+  primary key (beb_id)
 );
+
+create table pedidos(
+  ped_id bigint unsigned not null,
+  ped_data_hora datetime not null,
+  ped_qtd bigint not null,
+  beb_ped_id bigint unsigned not null,
+  usr_ped_id bigint unsigned not null,
+  primary key(ped_id),
+  foreign key ped_beb_fk (beb_ped_id) 
+    references bebidas(beb_id)
+    on delete restrict on update cascade,
+  foreign key usr_ped_fk (usr_ped_id) 
+    references usr_usuario(usr_id)
+    on delete restrict on update cascade
+)
+
+

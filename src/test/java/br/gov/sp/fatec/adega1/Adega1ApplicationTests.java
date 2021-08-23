@@ -62,6 +62,8 @@ class Adega1ApplicationTests {
 		usu.setAutorizacoes(new HashSet<Autorizacao>());
 		usu.getAutorizacoes().add(aut);
 		usuRepo.save(usu);
+		
+
 
 		assertFalse(autRepo.findByUsuariosLogin("teste").isEmpty());
 	}
