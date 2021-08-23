@@ -2,7 +2,7 @@ create schema adega;
 
 use adega;
 
-create 'user'@'localhost' identified by 'adm123';
+create user 'user'@'localhost' identified by 'adm123';
 
 grant select, insert, delete, update on adega.* to user@'localhost';
 
